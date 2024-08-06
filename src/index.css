@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: "montserrat", sans-serif;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+* {
+  font-family: "montserrat", sans-serif;
+  transition: background-color 0.3s;
+}
+
+.dark {
+  --color-primary-dark: #9e3215;
+  --color-primary: #ef274c;
+  --color-primary-accent: #c65d40;
+  --color-primary-foreground: #f8f8f8;
+  --color-background: #0f0f0f;
+  --color-faded-background: #0f0f0fb3;
+  --color-foreground: #f8f8f8;
+  --color-border: #575757;
+  --color-muted: #a0a0a0;
+  --color-accent: #575757;
+}
+
+.light {
+  --color-primary: #ef274c;
+  --color-primary-accent: #c65d40;
+  --color-primary-foreground: #f8f8f8;
+  --color-background: #f8f8f8;
+  --color-faded-background: rgba(248, 248, 248, 0.7);
+  --color-foreground: #1e1e1e;
+  --color-border: #b3b3b3;
+  --color-muted: #a0a0a0;
+  --color-accent: #b3b3b3;
+}
+
+.muted-text  {
+  @apply text-sm text-muted;
+}
+.hljs,
+.hljs-subst {
+  color: black;
+}
+
+.hljs-variable {
+  color: var(--color-primary) !important;
+}
+.hljs-variable.constant_ {
+  font-weight: 600;
+}
+.hljs-section,
+.hljs-title {
+  color: var(--color-foreground) !important;
+}
+
+.hljs-string {
+  color: var(--color-primary) !important;
+}
+
+.hljs-keyword {
+  color: var(--color-primary) !important;
+}
+
+.hljs-params {
+  color: var(--color-foreground) !important;
+}
+
+.hljs-number {
+  color: #24ddfd !important;
+}
+
+.hljs-built_in {
+  color: #00ffff !important;
+}
+.hljs-tag {
+  color: #ff0077 !important;
+}
+.hljs-name {
+  color: #b1b1b1 !important;
+}
+.hljs-attr {
+  color: #b1b1b1 !important;
+}
+code {
+  color: var(--color-muted) !important;
+}
+
+section {
+  @apply container mx-auto max-w-screen-2xl px-4  md:px-6;
+}
+.big-button {
+  @apply border-2 border-primary relative flex justify-between min-w-[250px] py-4 pl-6 pr-6 overflow-hidden rounded-full bg-background;
+  box-shadow: 0px 0px 15px 0px rgba(239, 39, 76, 0.3);
+}
+
+.big-button::before {
+  position: absolute;
+  display: block;
+  width: 100%;
+  height: 200%;
+  background-color: var(--color-primary);
+  border-radius: 9999px; /* Full rounded */
+  transition-property: all;
+  transition-duration: 0.3s;
+  left: -35%;
+  bottom: 0;
+  z-index: 0;
+  content: "";
+}
+
+.big-button:hover::before {
+  @apply transform left-0 bottom-1/2 translate-y-1/2;
+}
+.big-button svg {
+  transition-property: color, rotate;
+  transition-duration: 0.3s;
+}
+.big-button:hover svg {
+  color: var(--color-foreground);
+  rotate: 180deg;
+}
+
+.heroBox {
+  box-shadow: 0px 0px 25px 2px rgba(239, 39, 76, 0.3);
+}
+.codeIcon {
+  animation:
+    appear 1s forwards,
+    ticker 6s infinite;
+  transition:
+    z-index 0s,
+    max-height 0.3s,
+    max-width 0.3s,
+    rotate 0.3s,
+    box-shadow 0.3s;
+  opacity: 0;
+}
+.codeIcon:nth-child(odd) {
+  transform: translateY(-700%);
+}
+.codeIcon:nth-child(even) {
+  transform: translateY(700%);
+}
+.codeIcon:hover {
+  rotate: 0deg !important;
+  box-shadow: 0px 0px 15px 0px rgba(239, 39, 76, 0.3);
+  border-color: var(--color-primary) !important;
+}
+@keyframes appear {
+  100% {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+.blurMask {
+  opacity: 0;
+  animation: blurAppear 0.3s forwards;
+  /* pointer-events: none;
+  user-select: none; */
+}
+@keyframes blurAppear {
+  100% {
+    opacity: 1;
+  }
+}
