@@ -16,7 +16,7 @@ const MainLayout = (props: any) => {
     <>
       <Navbar />
       <div
-        class="size-[600px] blur-[100px] contrast-150 opacity-[0.07] pointer-events-none bg-primary  rounded-full   fixed"
+        class="size-[600px] blur-[100px] contrast-150 opacity-[0.07] pointer-events-none bg-primary  rounded-full   fixed mouse-shadow"
         ref={mouseShadowRef}
       />
       {props.children}

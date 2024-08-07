@@ -166,3 +166,47 @@ code {
     opacity: 1;
   }
 }
+
+.bento-box::after{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(var(--circle-size, 350px) circle at var(--mouse-x) var(--mouse-y), var(--color-primary), transparent 40%);
+  border-radius: inherit;
+  z-index: 0;
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity .5s;
+}
+.bento-box:hover::before{
+
+  z-index: 51;
+  opacity: 0.08;
+
+}
+.bento-box::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(var(--circle-size, 350px) circle at var(--mouse-x) var(--mouse-y), var(--color-primary), transparent 40%);
+  border-radius: inherit;
+  z-index: 51;
+ 
+  pointer-events: none;
+  transition: opacity .5s;
+  opacity: 0;
+  transition: opacity 0.2s
+}
+.bento-box div{
+
+}
+
+.mouse-shadow{
+  transition:scale 0.4s;
+}

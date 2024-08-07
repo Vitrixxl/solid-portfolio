@@ -1,4 +1,4 @@
-import { Component, createEffect, createSignal, Show } from "solid-js";
+import { Component, createEffect, createSignal, JSXElement, onMount, Show } from "solid-js";
 import {
   IconArrowRight,
   IconArrowsMoveVertical,
@@ -6,9 +6,24 @@ import {
 } from "@tabler/icons-solidjs";
 import { codeSamples } from "../libs/data";
 import HeroIcon from "../component/HeroIcon";
+import BentoBox from "../component/BentoBox";
 const HeroSection: Component = () => {
   const [isHovered, setIsHovered] = createSignal(false);
+  onMount(() => {
+    const bentoBoxes = document.querySelectorAll(".bento-box")
+    const handleMouseMove = (e: MouseEvent) => {
+      bentoBoxes.forEach(bentoBox => {
+        const { left, top, width, height } = bentoBox.getBoundingClientRect()
 
+        const relativeX = ((e.clientX - left) / width) * 100;
+        const relativeY = ((e.clientY - top) / height) * 100;
+
+        (bentoBox as HTMLDivElement).style.setProperty('--mouse-x', `${relativeX}%`);
+        (bentoBox as HTMLDivElement).style.setProperty('--mouse-y', `${relativeY}%`);
+      });
+    }
+    document.addEventListener("mousemove", handleMouseMove)
+  })
   return (
     <section class="min-h-screen flex   container mx-auto max-w-screen-2xl px-4  md:px-6; ">
       <div class="flex-1 space-y-8  sticky top-0 flex h-screen  justify-center flex-col">
@@ -98,16 +113,41 @@ const HeroSection: Component = () => {
           </div>
         </div>
         <div class="h-screen w-full">
-          <div class="grid grid-cols-9 gap-2 grid-rows-6 h-[500px] w-full">
-            <div class="col-span-2 row-span-1 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-3 row-span-2 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-4 row-span-1 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-2 row-span-1 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-4 row-span-4 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-3 row-span-2 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-2 row-span-3 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-3 row-span-5 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
-            <div class="col-span-6 row-span-4 rounded-xl border-border hover:border-primary border transition-all duration-100"></div>
+          <div class="grid grid-cols-10 p-4  gap-2 grid-rows-6 h-[700px] w-full   " onMouseEnter={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "0" }} onMouseLeave={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "1" }}>
+            <BentoBox cols={4} rows={1}>
+
+            </BentoBox>
+            <BentoBox cols={3} rows={3}>
+              
+            </BentoBox>
+            <BentoBox cols={3} rows={4}>
+              
+            </BentoBox>
+            <BentoBox cols={2} rows={2}>
+              
+            </BentoBox>
+            <BentoBox cols={2} rows={2}>
+              
+            </BentoBox>
+            <BentoBox cols={3} rows={3}>
+             
+            </BentoBox>
+            <BentoBox cols={4} rows={2}>
+             
+            </BentoBox>
+            <BentoBox cols={3} rows={2}>
+           
+            </BentoBox>
+            <BentoBox cols={4} rows={1}>
+            
+            </BentoBox>
+            {/* <div class="col-span-4 row-span-1 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
+            <div class="col-span-2 row-span-2 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
+            <div class="col-span-4 row-span-4 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
+            <div class="col-span-3 row-span-2 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
+            <div class="col-span-2 row-span-3 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
+            <div class="col-span-3 row-span-5 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
+            <div class="col-span-6 row-span-4 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div> */}
           </div>
         </div>
       </div>

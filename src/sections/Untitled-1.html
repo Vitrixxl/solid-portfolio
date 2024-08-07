@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Box</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        .container {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            background: #000;
+            display: flex;
+            justify-content: center; gap: 10px;
+            align-items: center;
+        }
+
+        .inner-box {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            background-color: #282828;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            padding: 1px;
+        }
+
+        .inner-box .content {
+            width: 100%;
+            height: 100%;
+    
+            background-color: #282828;
+            background-size: 16px 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inner-box .content::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            left: var(--mouse-x);
+            bottom: var(--mouse-y);
+            opacity: 0;
+            background: linear-gradient(270deg, rgba(61, 53, 78, 0) 28.87%, #3d354e 45.39%, #3d354e 53.54%, rgba(61, 53, 78, 0) 70.06%);
+        } 
+
+        .inner-box::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(var(--circle-size, 300px) circle at var(--mouse-x) var(--mouse-y), rgba(255, 255, 255, .4), transparent 40%);
+            border-radius: inherit;
+            z-index: 1;
+            opacity: 0.8;
+            pointer-events: none;
+            transition: opacity .5s;
+        }
+
+        .inner-box:hover .content::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="inner-box">
+            <div class="content">
+            
+            </div>
+        </div>
+        <div class="inner-box ">
+            <div class="content">
+            
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', (e) => {
+            const innerBoxs = document.querySelectorAll('.inner-box');
+            const { clientX: mouseX, clientY: mouseY } = e;
+            innerBoxs.forEach(innerBox => {
+                const { left, top, width, height } = innerBox.getBoundingClientRect();
+
+// Calculer la position de la souris relative à la boîte
+const relativeX = ((mouseX - left) / width) * 100;
+const relativeY = ((mouseY - top) / height) * 100;
+
+// Mettre à jour les variables CSS
+innerBox.style.setProperty('--mouse-x', `${relativeX}%`);
+innerBox.style.setProperty('--mouse-y', `${relativeY}%`);
+            });
+       
+        });
+    </script>
+</body>
+</html>
