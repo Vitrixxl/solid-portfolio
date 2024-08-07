@@ -19,8 +19,8 @@ const Navbar: Component = () => {
     const link = e.target as HTMLElement;
     const navListRect = navList.getBoundingClientRect();
     const linkRect = link.getBoundingClientRect();
-    selector.style.left = `${linkRect.left - navListRect.left + 8}px`;
-    selector.style.width = `${linkRect.width - 16}px`;
+    selector.style.left = `${linkRect.left - navListRect.left + 4}px`;
+    selector.style.width = `${linkRect.width - 8}px`;
   };
   const handleMouseLeave = () => {
     const selector = document.querySelector(".selector") as HTMLElement;
@@ -28,8 +28,8 @@ const Navbar: Component = () => {
     const navList = document.querySelector(".navList") as HTMLElement;
     const navListRect = navList.getBoundingClientRect();
     const activeLinkRect = activeLink.getBoundingClientRect();
-    selector.style.left = `${activeLinkRect.left - navListRect.left + 8}px`;
-    selector.style.width = `${activeLinkRect.width - 16}px`;
+    selector.style.left = `${activeLinkRect.left - navListRect.left + 4}px`;
+    selector.style.width = `${activeLinkRect.width - 8}px`;
   };
 
   onMount(() => {
@@ -55,24 +55,24 @@ const Navbar: Component = () => {
   ];
 
   return (
-    <header class="fixed top-0 z-[99999999] flex w-full items-center justify-center border-b border-border bg-faded-background px-6 py-2 backdrop-blur-sm md:px-4 hover:border-primary transition-colors duration-300">
+    <header class="sticky top-0 z-[99999999] flex w-full items-center justify-center border-b border-border bg-faded-background px-6 py-1 backdrop-blur-sm md:px-4  transition-colors duration-300">
       <nav class=" flex w-full items-center justify-between">
         <div>
           <a
             href="/"
-            class=" logo relative text-3xl font-extrabold tracking-wide text-primary"
+            class=" logo relative text-2xl font-bold text-primary tracking-tighter"
           >
             VSX
           </a>
         </div>
-        <div class="flex items-center gap-8">
-          <ul class="navList relative flex text-lg text-muted">
-            <div class="absolute h-0.5 bg-primary rounded-full -bottom-0.5  selector transition-all duration-300" />
+        <div class="flex items-center gap-2">
+          <ul class="navList relative flex text-lg text-muted items-center">
+            <div class="absolute h-[1px] bg-primary rounded-full -bottom-[6px]  selector transition-all duration-300" />
             {links.map((link) => (
-              <li>
+              <li class="h-min flex items-center">
                 <A
                   href={link.href}
-                  class={`navLink px-2 hover:text-foreground transition-all duration-300 ${
+                  class={`navLink px-1 hover:text-foreground transition-all text-sm duration-300 leading-[1] ${
                     pathname() === link.href
                       ? "text-foreground activeLink"
                       : "text-muted"

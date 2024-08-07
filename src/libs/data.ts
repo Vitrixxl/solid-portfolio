@@ -19,8 +19,8 @@ export const codeSamples: HeroIconType[] = [
     language: "javascript",
     Icon: Javascript,
     position: {
-      top: "-45",
-      left: "-40",
+      top: "45",
+      left: "40",
     },
     rotate: 10,
     code: `const createNewElement = (event) => {
@@ -46,8 +46,8 @@ export const codeSamples: HeroIconType[] = [
     Icon: Node,
     name: "Node.js",
     position: {
-      top: "120",
-      left: "-80",
+      top: "-30",
+      left: "240",
     },
     rotate: -6,
     code: `const app = express();
@@ -74,8 +74,8 @@ export const codeSamples: HeroIconType[] = [
 
     name: "Svelte",
     position: {
-      bottom: "-60",
-      left: "-5",
+      bottom: "10",
+      left: "70",
     },
     rotate: -12,
     code: `<script>
@@ -187,12 +187,12 @@ export const codeSamples: HeroIconType[] = [
   {
     language: "python",
     link: "https://www.djangoproject.com/",
-    Icon: Javascript,
+    Icon: Django,
 
     name: "Django",
     position: {
-      bottom: "-80",
-      left: "150",
+      bottom: "-100",
+      left: "200",
     },
     rotate: -5,
     code: `from django.http import HttpResponse

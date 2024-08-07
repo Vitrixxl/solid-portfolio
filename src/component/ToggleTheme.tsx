@@ -24,15 +24,15 @@ const ToggleTheme: Component = () => {
   return (
     <button
       onClick={handleToggle}
-      class=" relative flex h-8 w-16 overflow-hidden rounded-full border border-border bg-background p-1 transition-all duration-300"
+      class=" relative flex h-6 w-12 overflow-hidden rounded-full border border-border bg-background p-0.5 transition-all duration-300"
     >
       <div
         class={`relative aspect-square h-full rounded-full bg-primary text-foreground transition-all duration-100 ${
-          dark() ? "ml-8" : "ml-0"
+          dark() ? "ml-6" : "ml-0"
         }`}
       >
-        <IconMoonFilled class="absolute right-full top-1/2 mr-2 -translate-y-1/2 transform" />
-        <IconSunFilled class="absolute left-full top-1/2 ml-2 -translate-y-1/2 transform" />
+        <IconMoonFilled class="absolute right-full top-1/2 mr-1.5 -translate-y-1/2 transform size-4" />
+        <IconSunFilled class="absolute left-full top-1/2 ml-1.5 -translate-y-1/2 transform size-4" />
       </div>
     </button>
   );

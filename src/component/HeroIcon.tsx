@@ -24,7 +24,7 @@ const HeroIcon: Component<props> = ({ props, index, setHovered }) => {
   const handleHover = async (e: MouseEvent) => {
     const currentEl = e.target as HTMLDivElement;
     currentEl.style.zIndex = "9999";
-    document.querySelectorAll(".codeIcon").forEach((icon) => {
+    document.querySelectorAll(".code-icon").forEach((icon) => {
       if (icon === currentEl) return;
       (icon as HTMLDivElement).style.zIndex = "28";
     });
@@ -51,13 +51,12 @@ const HeroIcon: Component<props> = ({ props, index, setHovered }) => {
         bottom: bottom ? bottom + "px" : "",
         left: left ? left + "px" : "",
         right: right ? right + "px" : "",
-        rotate: rotate + "deg",
       }}
-      class="codeIcon  shadow-lg flex-col  gap-4 hover:border-primary  w-max h-max absolute flex max-w-[58px] overflow-hidden border-border bg-background rounded-xl p-3 border-2  max-h-[58px] z-[28] transition-all duration-300 hover:max-w-[800px] hover:max-h-[600px] hover:!rotate-0"
+      class="code-icon  shadow-lg flex-col  gap-4 hover:border-primary  w-max h-max absolute flex max-w-[43px] max-h-[43px] overflow-hidden border-border bg-background rounded-md p-2 border   z-[28] transition-all duration-300 hover:max-w-[800px] hover:max-h-[600px] hover:!rotate-0"
     >
       <div class="w-max flex gap-5">
-        <Icon class="size-[30px] flex-1" />
-        <div class="min-w-max  flex justify-between items-center">
+        <Icon class="size-[25px] flex-1" />
+        <div class="min-w-max  flex justify-between items-center pr-4">
           <h3 class="text-lg font-bold text-foreground">{name}</h3>
           <a href={link}></a>
         </div>

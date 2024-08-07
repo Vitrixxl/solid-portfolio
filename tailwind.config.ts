@@ -10,6 +10,8 @@ export default {
         background: "var(--color-background)",
         "faded-background": "var(--color-faded-background)",
         primary: "var(--color-primary)",
+        "primary-accent":"var(--color-primary-accent)",
+        "border-accent":"var(--color-border-accent)",
         border: "var(--color-border)",
         muted: "var(--color-muted)",
         accent: "var(--color-accent)",

@@ -7,33 +7,40 @@ import {
 import { codeSamples } from "../libs/data";
 import HeroIcon from "../component/HeroIcon";
 import BentoBox from "../component/BentoBox";
+import Button from "../component/Button";
 const HeroSection: Component = () => {
   const [isHovered, setIsHovered] = createSignal(false);
-  onMount(() => {
-    const bentoBoxes = document.querySelectorAll(".bento-box")
-    const handleMouseMove = (e: MouseEvent) => {
-      bentoBoxes.forEach(bentoBox => {
-        const { left, top, width, height } = bentoBox.getBoundingClientRect()
 
-        const relativeX = ((e.clientX - left) / width) * 100;
-        const relativeY = ((e.clientY - top) / height) * 100;
-
-        (bentoBox as HTMLDivElement).style.setProperty('--mouse-x', `${relativeX}%`);
-        (bentoBox as HTMLDivElement).style.setProperty('--mouse-y', `${relativeY}%`);
-      });
-    }
-    document.addEventListener("mousemove", handleMouseMove)
-  })
   return (
-    <section class="min-h-screen flex   container mx-auto max-w-screen-2xl px-4  md:px-6; ">
-      <div class="flex-1 space-y-8  sticky top-0 flex h-screen  justify-center flex-col">
-        <h1 class="text-[50px] font-semibold text-foreground transition-colors duration-300 uppercase leading-[1.2]">
-          <span class="text-primary font-black italic ">complex</span> or{" "}
-          <span class="text-primary font-black italic">simple</span> <br />{" "}
-          let's create your <br /> web app{" "}
-          <span class="text-primary font-black italic">together</span>
-        </h1>
-        <button class="big-button w-fit ">
+    <section class="min-h-screen flex flex-col   container mx-auto max-w-screen-2xl px-4  md:px-6; ">
+      <div class="flex-1 mt-28 mb-16    mx-auto  justify-center relative w-full">
+      {codeSamples.map((code, i) => (
+              <HeroIcon
+                props={code}
+                index={i}
+                setHovered={() => setIsHovered(!isHovered())}
+              />
+            ))}
+        <div class="mb-10">
+
+          <h1 class="text-4xl my-4 tracking-tight  font-bold text-center">
+            Complex or simple ? <br /> Let's build <span class="text-primary">your</span> web app <span class="text-primary">together</span>
+          </h1>
+          <p class="text-sm text-muted text-center">
+            Absolutly passionate by my work, I'm always looking for  <span class="text-accent font-semibold">new challenges and new projects.
+            </span> <br /> Leading by a strong will to  <span class="text-accent font-semibold">learn and improve</span>   my skills <br />
+            i'm able to deliver <span class="text-accent font-semibold">quality</span>  and  <span class="text-accent font-semibold">scalable</span> work within the shortest time possible
+          </p>
+        </div>
+        <div class="flex gap-10 mt-2  justify-center items-center">
+          <Button variant="primary">
+            Contact me
+          </Button>
+          <Button variant="secondary">
+            My projects
+          </Button>
+        </div>
+        {/* <button class="big-button w-fit ">
           <span class="z-10 text-xl font-bold italic block">HIRE ME</span>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -52,11 +59,13 @@ const HeroSection: Component = () => {
               color="currentColor"
             ></path>
           </svg>
-        </button>
+        </button> */}
       </div>
-      <div class="flex-1 ">
-        <div class="flex-1 flex items-center justify-center h-screen w-full relative   ">
-          <div class="relative border-primary border-4 rounded-2xl  max-w-[450px] z-10 bg-background heroBox transition-colors duration-300 p-4">
+      <div class="flex-1 flex items-center justify-center h-screen w-full relative  my-20 ">
+        <div class="p-[1px] bg-border relative ">
+
+        </div>
+        {/* <div class="relative  rounded-lg  max-w-[450px] z-10 bg-background heroBox transition-colors duration-300 p-4">
             <div
               class="fixed z-[29] select-none pointer-events-none w-full h-full top-0 left-0  backdrop-blur-[4px] transition-opacity duration-300"
               style={{
@@ -82,10 +91,10 @@ const HeroSection: Component = () => {
                 <path d="M9.983 3v7.391c0 5.704-3.731 9.57-8.983 10.609l-.995-2.151c2.432-.917 3.995-3.638 3.995-5.849h-4v-10h9.983zm14.017 0v7.391c0 5.704-3.748 9.571-9 10.609l-.996-2.151c2.433-.917 3.996-3.638 3.996-5.849h-3.983v-10h9.983z" />
               </svg>
               <div class="flex-1 px-2">
-                <h2 class="text-wrap text-lg font-bold uppercase italic text-foreground transition-colors duration-300">
-                  <span class="text-wrap text-lg font-extrabold text-primary">
+                <h2 class="text-wrap text-xl tracking-tight font-bold uppercase  text-foreground transition-colors duration-300">
+        
                     Cascales
-                  </span>{" "}
+                 
                   Vitrice
                 </h2>
               </div>
@@ -110,36 +119,38 @@ const HeroSection: Component = () => {
                 Improve your buisness with me. <IconArrowRight size={20} />
               </a>
             </div>
-          </div>
-        </div>
+          </div>*/}
+      </div>
+      <div class="flex-1 mt-20 ">
+
         <div class="h-screen w-full">
-          <div class="grid grid-cols-10 p-4  gap-2 grid-rows-6 h-[700px] w-full   " onMouseEnter={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "0" }} onMouseLeave={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "1" }}>
+          <div class="grid grid-cols-10   gap-2 grid-rows-6 h-[700px] w-full   " onMouseEnter={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "0" }} onMouseLeave={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "1" }}>
             <BentoBox cols={4} rows={1}>
+              test
+            </BentoBox>
+            <BentoBox cols={3} rows={3}>
+
+            </BentoBox>
+            <BentoBox cols={3} rows={4}>
+
+            </BentoBox>
+            <BentoBox cols={2} rows={2}>
+
+            </BentoBox>
+            <BentoBox cols={2} rows={2}>
 
             </BentoBox>
             <BentoBox cols={3} rows={3}>
-              
-            </BentoBox>
-            <BentoBox cols={3} rows={4}>
-              
-            </BentoBox>
-            <BentoBox cols={2} rows={2}>
-              
-            </BentoBox>
-            <BentoBox cols={2} rows={2}>
-              
-            </BentoBox>
-            <BentoBox cols={3} rows={3}>
-             
+
             </BentoBox>
             <BentoBox cols={4} rows={2}>
-             
+
             </BentoBox>
             <BentoBox cols={3} rows={2}>
-           
+
             </BentoBox>
             <BentoBox cols={4} rows={1}>
-            
+
             </BentoBox>
             {/* <div class="col-span-4 row-span-1 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
             <div class="col-span-2 row-span-2 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
