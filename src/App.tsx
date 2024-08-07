@@ -1,8 +1,6 @@
 import { type Component } from "solid-js";
 import { RouteProps, Router } from "@solidjs/router";
-
 import Navbar from "./component/Navbar";
-import path from "path";
 import MainLayout from "./layouts/MainLayout";
 import Home from "./pages/Home";
 
