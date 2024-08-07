@@ -10,15 +10,12 @@ hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("typescript", typescript);
 import { Component, createSignal, onMount } from "solid-js";
 import { HeroIconType } from "../Types";
-interface props extends HeroIconType {
-  index: number;
-  setHovered: () => void;
-}
-const HeroIcon: Component<{
+interface props {
   props: HeroIconType;
   index: number;
   setHovered: () => void;
-}> = ({ props, index, setHovered }) => {
+}
+const HeroIcon: Component<props> = ({ props, index, setHovered }) => {
   const { position, language, name, code, link, rotate, Icon } = props;
   const { bottom, left, right, top } = position;
   const [displayedCode, setDisplayedCode] = createSignal("");
@@ -56,7 +53,7 @@ const HeroIcon: Component<{
         right: right ? right + "px" : "",
         rotate: rotate + "deg",
       }}
-      class="codeIcon  shadow-lg flex-col hover:border-primary   absolute flex max-w-[58px] overflow-hidden border-border bg-background rounded-xl p-3 border-2  max-h-[58px] z-[28] transition-all duration-300 hover:max-w-[800px] hover:max-h-[600px] hover:!rotate-0"
+      class="codeIcon  shadow-lg flex-col  gap-4 hover:border-primary  w-max h-max absolute flex max-w-[58px] overflow-hidden border-border bg-background rounded-xl p-3 border-2  max-h-[58px] z-[28] transition-all duration-300 hover:max-w-[800px] hover:max-h-[600px] hover:!rotate-0"
     >
       <div class="w-max flex gap-5">
         <Icon class="size-[30px] flex-1" />
@@ -65,9 +62,9 @@ const HeroIcon: Component<{
           <a href={link}></a>
         </div>
       </div>
-      <pre class=" overflow-hidden pointer-events-none   ">
+      <pre class=" overflow-hidden pointer-events-none text-nowrap  ">
         <code
-          class={`language-${language} text-sm  pointer-events-none `}
+          class={`language-${language} text-sm text-nowrap pointer-events-none !mt-0`}
           innerHTML={hljs.highlight(displayedCode(), { language }).value}
         >
           {displayedCode()}

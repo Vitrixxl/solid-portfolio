@@ -223,6 +223,8 @@ export const Next: Component<props> = (props) => {
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="xMidYMid"
+      stroke="#FFFFFF"
+      stroke-width={4}
     >
       <g>
         <path

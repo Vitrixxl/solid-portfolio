@@ -10,7 +10,7 @@ const HeroSection: Component = () => {
   const [isHovered, setIsHovered] = createSignal(false);
 
   return (
-    <section class="h-screen flex items-center  ">
+    <section class="h-screen flex items-center  container mx-auto max-w-screen-2xl px-4  md:px-6; ">
       <div class="flex-1 space-y-8">
         <h1 class="text-[50px] font-semibold text-foreground transition-colors duration-300 uppercase leading-[1.2]">
           <span class="text-primary font-black italic ">complex</span> or{" "}

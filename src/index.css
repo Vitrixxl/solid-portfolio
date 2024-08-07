@@ -12,7 +12,6 @@ body {
     color 0.3s;
 }
 * {
-  font-family: "montserrat", sans-serif;
   transition: background-color 0.3s;
 }
 
@@ -92,9 +91,6 @@ code {
   color: var(--color-muted) !important;
 }
 
-section {
-  @apply container mx-auto max-w-screen-2xl px-4  md:px-6;
-}
 .big-button {
   @apply border-2 border-primary relative flex justify-between min-w-[250px] py-4 pl-6 pr-6 overflow-hidden rounded-full bg-background;
   box-shadow: 0px 0px 15px 0px rgba(239, 39, 76, 0.3);
@@ -131,15 +127,14 @@ section {
   box-shadow: 0px 0px 25px 2px rgba(239, 39, 76, 0.3);
 }
 .codeIcon {
-  animation:
-    appear 1s forwards,
-    ticker 6s infinite;
+  animation: appear 1s forwards;
   transition:
     z-index 0s,
     max-height 0.3s,
     max-width 0.3s,
     rotate 0.3s,
-    box-shadow 0.3s;
+    box-shadow 0.3s,
+    background-color 0.3s;
   opacity: 0;
 }
 .codeIcon:nth-child(odd) {
