@@ -14,6 +14,7 @@ const MainLayout = (props: any) => {
     const bentoBoxes = document.querySelectorAll(".bento-box")
     const heroIcons = document.querySelectorAll(".hero-icon")
     const customButtons = document.querySelectorAll(".custom-button")
+    const CodeIcons = document.querySelectorAll(".code-icon")
     const handleMouseMove = (e: MouseEvent) => {
       bentoBoxes.forEach(bentoBox => {
         const { left, top, width, height } = bentoBox.getBoundingClientRect()
@@ -42,7 +43,17 @@ const MainLayout = (props: any) => {
         (customButton as HTMLButtonElement).style.setProperty('--mouse-x', `${relativeX}%`);
         (customButton as HTMLButtonElement).style.setProperty('--mouse-y', `${relativeY}%`);
       });
+      CodeIcons.forEach(CodeIcon => {
+        const { left, top, width, height } = CodeIcon.getBoundingClientRect()
+
+        const relativeX = ((e.clientX - left) / width) * 100;
+        const relativeY = ((e.clientY - top) / height) * 100;
+
+        (CodeIcon as HTMLDivElement).style.setProperty('--mouse-x', `${relativeX}%`);
+        (CodeIcon as HTMLDivElement).style.setProperty('--mouse-y', `${relativeY}%`);
+      }); 
     }
+    
     document.addEventListener("mousemove", handleMouseMove)
 
   });

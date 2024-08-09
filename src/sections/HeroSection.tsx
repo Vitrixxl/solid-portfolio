@@ -1,4 +1,11 @@
-import { Component, createEffect, createSignal, JSXElement, onMount, Show } from "solid-js";
+import {
+  Component,
+  createEffect,
+  createSignal,
+  JSXElement,
+  onMount,
+  Show,
+} from "solid-js";
 import {
   IconArrowRight,
   IconArrowsMoveVertical,
@@ -7,38 +14,51 @@ import {
 import { codeSamples } from "../libs/data";
 import HeroIcon from "../component/HeroIcon";
 import BentoBox from "../component/BentoBox";
-import Button from "../component/Button";
+import Button, { ButtonBurger } from "../component/Buttons";
+import Tooltip from "../component/Tooltip";
+import ProjectBentoBox from "../component/ProjectBentoBox";
 const HeroSection: Component = () => {
   const [isHovered, setIsHovered] = createSignal(false);
 
   return (
-    <section class="min-h-screen flex flex-col   container mx-auto max-w-screen-2xl px-4  md:px-6; ">
-      <div class="flex-1 mt-28 mb-16    mx-auto  justify-center relative w-full">
-      {codeSamples.map((code, i) => (
-              <HeroIcon
-                props={code}
-                index={i}
-                setHovered={() => setIsHovered(!isHovered())}
-              />
-            ))}
+    <section class="md:px-6; container mx-auto flex min-h-screen max-w-screen-2xl flex-col px-4">
+      <div class="relative mx-auto mb-16 mt-28 w-full flex-1 justify-center">
+        <div
+          class="pointer-events-none fixed left-0 top-0 z-[29] h-full w-full select-none backdrop-blur-[4px] transition-opacity duration-300"
+          style={{
+            opacity: isHovered() ? "1" : "0",
+          }}
+        />
+        {codeSamples.map((code, i) => (
+          <HeroIcon
+            props={code}
+            index={i}
+            setHovered={() => setIsHovered(!isHovered())}
+          />
+        ))}
         <div class="mb-10">
-
-          <h1 class="text-4xl my-4 tracking-tight  font-bold text-center">
-            Complex or simple ? <br /> Let's build <span class="text-primary">your</span> web app <span class="text-primary">together</span>
+          <h1 class="my-4 text-center text-4xl font-bold tracking-tight">
+            Complex or simple ? <br /> Let's build{" "}
+            <span class="text-primary">your</span> web app{" "}
+            <span class="text-primary">together</span>
           </h1>
-          <p class="text-sm text-muted text-center">
-            Absolutly passionate by my work, I'm always looking for  <span class="text-accent font-semibold">new challenges and new projects.
-            </span> <br /> Leading by a strong will to  <span class="text-accent font-semibold">learn and improve</span>   my skills <br />
-            i'm able to deliver <span class="text-accent font-semibold">quality</span>  and  <span class="text-accent font-semibold">scalable</span> work within the shortest time possible
+          <p class="text-center text-sm text-muted">
+            Absolutly passionate by my work, I'm always looking for{" "}
+            <span class="font-semibold text-accent">
+              new challenges and new projects.
+            </span>{" "}
+            <br /> Leading by a strong will to{" "}
+            <span class="font-semibold text-accent">learn and improve</span> my
+            skills <br />
+            i'm able to deliver{" "}
+            <span class="font-semibold text-accent">quality</span> and{" "}
+            <span class="font-semibold text-accent">scalable</span> work within
+            the shortest time possible
           </p>
         </div>
-        <div class="flex gap-10 mt-2  justify-center items-center">
-          <Button variant="primary">
-            Contact me
-          </Button>
-          <Button variant="secondary">
-            My projects
-          </Button>
+        <div class="mt-2 flex items-center justify-center gap-10">
+          <Button variant="primary">Contact me</Button>
+          <Button variant="secondary">My projects</Button>
         </div>
         {/* <button class="big-button w-fit ">
           <span class="z-10 text-xl font-bold italic block">HIRE ME</span>
@@ -61,17 +81,10 @@ const HeroSection: Component = () => {
           </svg>
         </button> */}
       </div>
-      <div class="flex-1 flex items-center justify-center h-screen w-full relative  my-20 ">
-        <div class="p-[1px] bg-border relative ">
-
-        </div>
+      <div class="relative my-20 flex h-screen w-full flex-1 items-center justify-center">
+        <div class="relative bg-border p-[1px]"></div>
         {/* <div class="relative  rounded-lg  max-w-[450px] z-10 bg-background heroBox transition-colors duration-300 p-4">
-            <div
-              class="fixed z-[29] select-none pointer-events-none w-full h-full top-0 left-0  backdrop-blur-[4px] transition-opacity duration-300"
-              style={{
-                opacity: isHovered() ? "1" : "0",
-              }}
-            />
+   
 
             {codeSamples.map((code, i) => (
               <HeroIcon
@@ -121,37 +134,39 @@ const HeroSection: Component = () => {
             </div>
           </div>*/}
       </div>
-      <div class="flex-1 mt-20 ">
-
+      <div class="mt-20 flex-1">
         <div class="h-screen w-full">
-          <div class="grid grid-cols-10   gap-2 grid-rows-6 h-[700px] w-full   " onMouseEnter={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "0" }} onMouseLeave={() => { (document.querySelector(".mouse-shadow") as HTMLDivElement).style.scale = "1" }}>
+          <div
+            class="grid h-[700px] w-full grid-cols-10 grid-rows-6 gap-2"
+            onMouseEnter={() => {
+              (
+                document.querySelector(".mouse-shadow") as HTMLDivElement
+              ).style.scale = "0";
+            }}
+            onMouseLeave={() => {
+              (
+                document.querySelector(".mouse-shadow") as HTMLDivElement
+              ).style.scale = "1";
+            }}
+          >
             <BentoBox cols={4} rows={1}>
-              test
+              <Tooltip>#javascript</Tooltip>
+              <ButtonBurger />
             </BentoBox>
-            <BentoBox cols={3} rows={3}>
-
-            </BentoBox>
-            <BentoBox cols={3} rows={4}>
-
-            </BentoBox>
-            <BentoBox cols={2} rows={2}>
-
-            </BentoBox>
-            <BentoBox cols={2} rows={2}>
-
-            </BentoBox>
-            <BentoBox cols={3} rows={3}>
-
-            </BentoBox>
-            <BentoBox cols={4} rows={2}>
-
-            </BentoBox>
-            <BentoBox cols={3} rows={2}>
-
-            </BentoBox>
-            <BentoBox cols={4} rows={1}>
-
-            </BentoBox>
+            <ProjectBentoBox
+              cols={3}
+              rows={3}
+              title="Map my mind"
+              tags={["react", "zustand"]}
+              link="/map-my-mind"
+            />
+            <BentoBox cols={3} rows={4}></BentoBox>
+            <BentoBox cols={2} rows={2}></BentoBox>
+            <BentoBox cols={2} rows={2}></BentoBox>
+            <BentoBox cols={3} rows={3}></BentoBox>
+            <BentoBox cols={4} rows={2}></BentoBox>
+            <BentoBox cols={3} rows={2}></BentoBox>
+            <BentoBox cols={4} rows={1}></BentoBox>
             {/* <div class="col-span-4 row-span-1 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
             <div class="col-span-2 row-span-2 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>
             <div class="col-span-4 row-span-4 rounded-xl border-border hover:border-transparent border transition-all duration-300 bg-background bento-box"></div>

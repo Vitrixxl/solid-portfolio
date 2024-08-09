@@ -8,7 +8,7 @@ hljs.registerLanguage("javascript", javascript);
 hljs.registerLanguage("python", python);
 hljs.registerLanguage("xml", xml);
 hljs.registerLanguage("typescript", typescript);
-import { Component, createSignal, onMount } from "solid-js";
+import { Component, createSignal, onMount, Show } from "solid-js";
 import { HeroIconType } from "../Types";
 interface props {
   props: HeroIconType;
@@ -42,34 +42,51 @@ const HeroIcon: Component<props> = ({ props, index, setHovered }) => {
     setIsTyping(false);
   };
   return (
-    <div
-      onMouseEnter={handleHover}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        "animation-delay": (0.2 * index).toString() + "s",
-        top: top ? top + "px" : "",
-        bottom: bottom ? bottom + "px" : "",
-        left: left ? left + "px" : "",
-        right: right ? right + "px" : "",
-      }}
-      class="code-icon  shadow-lg flex-col  gap-4 hover:border-primary  w-max h-max absolute flex max-w-[43px] max-h-[43px] overflow-hidden border-border bg-background rounded-md p-2 border   z-[28] transition-all duration-300 hover:max-w-[800px] hover:max-h-[600px] hover:!rotate-0"
-    >
-      <div class="w-max flex gap-5">
-        <Icon class="size-[25px] flex-1" />
-        <div class="min-w-max  flex justify-between items-center pr-4">
-          <h3 class="text-lg font-bold text-foreground">{name}</h3>
-          <a href={link}></a>
+    <>
+      <div
+        class="code-icon absolute h-max w-max overflow-hidden rounded-md bg-border p-[1px] hover:backdrop-blur-sm"
+        onMouseEnter={handleHover}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          "animation-delay": (0.2 * index).toString() + "s",
+          top: top ? top + "px" : "",
+          bottom: bottom ? bottom + "px" : "",
+          left: left ? left + "px" : "",
+          right: right ? right + "px" : "",
+        }}
+      >
+        <div class="relative z-10 h-full max-h-[42px] w-full max-w-[42px] rounded-md bg-background p-2 hover:max-h-[600px] hover:max-w-[800px]">
+          <div class="flex w-max gap-5">
+            <Icon class="size-[26px] flex-1" />
+            <div class="flex min-w-max items-center justify-between pr-4">
+              <h3 class="text-lg font-bold text-foreground">{name}</h3>
+              <a href={link}></a>
+            </div>
+          </div>
+          <pre class="pointer-events-none overflow-hidden text-nowrap">
+            <code
+              class={`language-${language} pointer-events-none !mt-0 text-nowrap text-sm`}
+              innerHTML={hljs.highlight(displayedCode(), { language }).value}
+            >
+              {displayedCode()}
+            </code>
+          </pre>
         </div>
       </div>
-      <pre class=" overflow-hidden pointer-events-none text-nowrap  ">
-        <code
-          class={`language-${language} text-sm text-nowrap pointer-events-none !mt-0`}
-          innerHTML={hljs.highlight(displayedCode(), { language }).value}
-        >
-          {displayedCode()}
-        </code>
-      </pre>
-    </div>
+
+      {/* <div
+        onMouseEnter={handleHover}
+        onMouseLeave={handleMouseLeave}
+        style={{
+          "animation-delay": (0.2 * index).toString() + "s",
+          top: top ? top + "px" : "",
+          bottom: bottom ? bottom + "px" : "",
+          left: left ? left + "px" : "",
+          right: right ? right + "px" : "",
+        }}
+        class="code-icon  shadow-lg flex-col  gap-4 hover:border-primary  w-max h-max absolute flex max-w-[43px] max-h-[43px] overflow-hidden border-border bg-background rounded-md p-2 border   z-[28] transition-all duration-300 hover:max-w-[800px] hover:max-h-[600px] hover:!rotate-0"
+      ></div> */}
+    </>
   );
 };
 

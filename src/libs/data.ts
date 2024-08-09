@@ -19,8 +19,8 @@ export const codeSamples: HeroIconType[] = [
     language: "javascript",
     Icon: Javascript,
     position: {
-      top: "45",
-      left: "40",
+      top: "40",
+      left: "20",
     },
     rotate: 10,
     code: `const createNewElement = (event) => {
@@ -46,8 +46,8 @@ export const codeSamples: HeroIconType[] = [
     Icon: Node,
     name: "Node.js",
     position: {
-      top: "-30",
-      left: "240",
+      bottom: "30",
+      left: "110",
     },
     rotate: -6,
     code: `const app = express();
@@ -74,8 +74,8 @@ export const codeSamples: HeroIconType[] = [
 
     name: "Svelte",
     position: {
-      bottom: "10",
-      left: "70",
+      top: "-50",
+      left: "220",
     },
     rotate: -12,
     code: `<script>
@@ -95,8 +95,8 @@ export const codeSamples: HeroIconType[] = [
     link: "tailwindcss.com",
     name: "Tailwind CSS",
     position: {
-      bottom: "60",
-      right: "-70",
+      bottom: "-50",
+      left: "310",
     },
     rotate: 18,
     code: `<h1 class="text-4xl font-bold text-center text-blue-500" >
@@ -112,7 +112,7 @@ export const codeSamples: HeroIconType[] = [
     name: "Typescript",
     position: {
       top: "-75",
-      right: "70",
+      left: "400",
     },
     rotate: -14,
     code: `interface User {
@@ -134,7 +134,7 @@ export const codeSamples: HeroIconType[] = [
     name: "React",
     position: {
       bottom: "-60",
-      right: "30",
+      right: "400",
     },
     rotate: 6,
     code: `const App = () => {
@@ -154,7 +154,7 @@ export const codeSamples: HeroIconType[] = [
     name: "Supabase",
     position: {
       top: "-20",
-      right: "-80",
+      right: "330",
     },
     rotate: -6,
     code: `const supabaseUrl = 'https://your-project-id.supabase.co';
@@ -168,8 +168,8 @@ export const codeSamples: HeroIconType[] = [
     Icon: Next,
     name: "Next.js",
     position: {
-      top: "-90",
-      left: "100",
+      bottom: "20",
+      right: "220",
     },
     rotate: 10,
     code: `import React from 'react';
@@ -192,7 +192,7 @@ export const codeSamples: HeroIconType[] = [
     name: "Django",
     position: {
       bottom: "-100",
-      left: "200",
+      right: "10",
     },
     rotate: -5,
     code: `from django.http import HttpResponse
@@ -206,8 +206,8 @@ export const codeSamples: HeroIconType[] = [
     Icon: Solid,
     name: "Solid",
     position: {
-      top: "-90",
-      right: "180",
+      top: "30",
+      right: "110",
     },
     rotate: 12,
     code: `import { createSignal } from "solid-js";
